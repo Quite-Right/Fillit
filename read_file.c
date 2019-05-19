@@ -12,6 +12,16 @@
 
 #include "fillit.h"
 
+<<<<<<< HEAD
+/* начало программы, программа получает на вход название файла и пытается его
+открыть, в случае, если программа получила больше или меньше, чем 1 аргумент,
+производится вывод usage, в случае если считывание не удалось - ошибка */
+
+//fd = 0?
+//нужна ли проверка на закрытие файла?
+
+=======
+>>>>>>> e5bf8b6ceda497756635bb7a7e9b24d64e606a7b
 int		main(int argc, char **argv)
 {
 	int		fd;
@@ -19,11 +29,17 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
+<<<<<<< HEAD
+		//
+		if (close(fd) != 0);
+			fillit_error();
+=======
 		//fd = 0?
 
 		if (close(fd) != 0);
 			fillit_error();
 		//нужна ли проверка на закрытие файла?
+>>>>>>> e5bf8b6ceda497756635bb7a7e9b24d64e606a7b
 	}
 	else
 		write(1, "fillit source_file\n", 19);
