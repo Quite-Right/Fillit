@@ -136,7 +136,7 @@ int	fillit_check(int fd, char **tetr)
 		free(input);
 		input = temp;
 		//temp = NULL?
-		free (line);
+		free(line);
 	}
 	return (i != 0 ? -1 : create_tetr_array(&input, tetr));
 }
