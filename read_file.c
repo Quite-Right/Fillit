@@ -23,13 +23,12 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	char **tetr;
+	char **tetr = NULL;
 
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		if (fillit_check(fd, tetr) != 0)
-			fillit_error();
+		tetr = fillit_check(fd, tetr);
 		/*
 		создание карты
 		подсчет количества тетрамин

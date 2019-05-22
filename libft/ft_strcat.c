@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/02/05 17:56:39 by kturnips          #+#    #+#             */
+/*   Updated: 2019/02/05 18:08:29 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+char	*ft_strcat(char *dest, char *src)
+{
+	unsigned int index_d;
+	unsigned int index_s;
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+	index_s = 0;
+	index_d = 0;
+	while (dest[index_d] != '\0')
+		index_d++;
+	while (src[index_s] != '\0')
+	{
+		dest[index_d + index_s] = src[index_s];
+		index_s++;
+	}
+	dest[index_d + index_s] = '\0';
+	return (dest);
+}
