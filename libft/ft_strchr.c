@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/04/06 19:49:55 by kturnips          #+#    #+#             */
+/*   Updated: 2019/04/07 19:00:07 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
+char	*ft_strchr(const char *s, int c)
+{
+	char *result;
 
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+	result = (char *)s;
+	while (*result)
+	{
+		if (*result == ((unsigned char)c))
+		{
+			return (result);
+		}
+		++result;
+	}
+	if (*result == c)
+		return (result);
+	return (NULL);
+}

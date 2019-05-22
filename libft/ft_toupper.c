@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/04/09 16:05:48 by kturnips          #+#    #+#             */
+/*   Updated: 2019/04/09 16:05:49 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+int		ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
+}

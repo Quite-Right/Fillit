@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/04/04 20:29:33 by kturnips          #+#    #+#             */
+/*   Updated: 2019/04/13 18:34:41 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
+{
+	size_t i;
 
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+	if (s1 && s2)
+	{
+		i = 0;
+		if (n)
+		{
+			while (s1[i] && s2[i] && s1[i] == s2[i] && n != i)
+				i++;
+			if (s1[i - 1] == s2[i - 1] && n == i)
+				return (1);
+			else if (s1[i] == s2[i])
+				return (1);
+		}
+		else
+			return (1);
+	}
+	return (0);
+}

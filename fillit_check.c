@@ -12,6 +12,8 @@
 
 #include "fillit.h"
 
+#include <stdio.h>
+
 /* на вход функция получает номер элемента тетрамины и тетрамину в виде строки
 из 16 символов, результатом функции является количество связей конкретного
 элемента, количеством связей конкретного элемента считается количесво граничих
@@ -22,13 +24,13 @@ int		check_connections(int i, char *cur_tetr)
 	int result;
 
 	result = 0;
-	if (cur_tetr[i + 1] && cur_tetr[i + 1] == '*')
+	if (i + 1 < 16 && cur_tetr[i + 1] == '#')
 		++result;
-	if (cur_tetr[i - 1] && cur_tetr[i - 1] == '*')
+	if (i - 1 > -1 && cur_tetr[i - 1] == '#')
 		++result;
-	if (cur_tetr[i + 4] && cur_tetr[i + 4] == '*')
+	if (i + 4 < 16 && cur_tetr[i + 4] == '#')
 		++result;
-	if (cur_tetr[i - 4] && cur_tetr[i - 4] == '*')
+	if (i - 4 > -1 && cur_tetr[i - 4] == '#')
 		++result;
 	return (result);
 }
@@ -46,7 +48,7 @@ int check_curent_tetr(char *cur_tetr)
 		j = 0;
 		k = 0;
 		while (cur_tetr[++i]) {
-			if (cur_tetr[i] == '*')
+			if (cur_tetr[i] == '#')
 			{
 				++j;
 				k += check_connections(i, cur_tetr);
@@ -63,26 +65,27 @@ int check_curent_tetr(char *cur_tetr)
 
 //size_t
 
-int create_tetr_array(char **input, char** tetr)
+char **create_tetr_array(char **input, char** tetr)
 {
 	int i;
 	int j;
 
 	j = -1;
-	i = ft_strlen(input);
+	i = ft_strlen(*input);
+
 	if (i == 0 || i % 16 != 0)
-		return (-1);
+		fillit_error();
 	if (!(tetr = (char **)(malloc(sizeof(char *) * (i % 16 + 1)))))
-		return (-1);
-	while (++j < i % 16)
+		fillit_error();
+	while (++j < i / 16)
 	{
-		if (!(tetr[j] = ft_strsub(input, 0 + j * 16, 16)))
-			return (-1);
+		if (!(tetr[j] = ft_strsub(*input, j * 16, 16)))
+			fillit_error();
 		if (check_curent_tetr(tetr[j]) != 0)
-			return (-1);
+			fillit_error();
 	}
 	free (*input);
-	return (0);
+	return (tetr);
 }
 
 /* функция на вход получает строку, и ее номер, проверяет строку на длинну и
@@ -97,7 +100,7 @@ int	check_curent_line(char *line, int line_number)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '.' && line[i] != '*')
+		if (line[i] != '.' && line[i] != '#')
 			return (-1);
 		++i;
 	}
@@ -116,7 +119,7 @@ int	check_curent_line(char *line, int line_number)
 //free (line) -> ft_memdel(line)
 //ft_strnew(0/1)
 
-int	fillit_check(int fd, char **tetr)
+char **fillit_check(int fd, char **tetr)
 {
 	char *input;
 	char *temp;
@@ -126,17 +129,20 @@ int	fillit_check(int fd, char **tetr)
 
 	j = 0;
 	if (!(input = ft_strnew(0)))
-		return (-1);
+		fillit_error();
 	while ((i = get_next_line(fd, &line)) == 1)
 	{
 		if (check_curent_line(line, ++j) != 0)
-			return (-1);
+			fillit_error();
 		if (!(temp = ft_strjoin(input, line)))
-			return (-1);
+			fillit_error();
 		free(input);
 		input = temp;
 		//temp = NULL?
-		free (line);
+		if (*line)
+			free(line);
 	}
-	return (i != 0 ? -1 : create_tetr_array(&input, tetr));
+	if (j % 5 != 4 || i != 0)
+		fillit_error();
+	return (create_tetr_array(&input, tetr));
 }

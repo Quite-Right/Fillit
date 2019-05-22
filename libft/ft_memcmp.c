@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/04/06 18:40:48 by kturnips          #+#    #+#             */
+/*   Updated: 2019/04/06 18:40:50 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t i;
 
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+	i = 0;
+	while (n-- > 0)
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		++i;
+	}
+	return (0);
+}

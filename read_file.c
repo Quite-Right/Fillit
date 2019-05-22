@@ -23,17 +23,19 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	char **tetr;
+	char **tetr = NULL;
 
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		//идея: проверить тетрамины и записать их в двумерный  массив tetr
-		if (fillit_check(fd, tetr) != 0)
-			fillit_error();
-		//
-
-		if (close(fd) != 0);
+		tetr = fillit_check(fd, tetr);
+		/*
+		создание карты
+		подсчет количества тетрамин
+		подсчет размерности карты
+		передача карты в основную функцию по располажению тетрамин внутри карты
+		*/
+		if (close(fd) != 0)
 			fillit_error();
 	}
 	else

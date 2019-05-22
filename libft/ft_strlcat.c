@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kturnips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 17:45:53 by kturnips          #+#    #+#             */
-/*   Updated: 2019/05/08 21:05:05 by kturnips         ###   ########.fr       */
+/*   Created: 2019/04/06 19:16:31 by kturnips          #+#    #+#             */
+/*   Updated: 2019/04/11 16:55:33 by kturnips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# define MAX_FD 10240
-# define BUFF_SIZE 21
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	result;
+	char	*d;
 
-int		get_next_line(const int fd, char **line);
-int	find_min_size(int count);
-void	fillit_error(void);
-char **create_map(int size);
-char **enlarge_map(int size, char **current_map);
-char **fillit_check(int fd, char **tetr);
-
-#endif
+	d = dst;
+	result = 0;
+	while (*d && size != 0)
+	{
+		++d;
+		--size;
+	}
+	result = d - dst;
+	dst += result;
+	if (size == 0)
+		return (result + ft_strlen(src));
+	result += ft_strlen(src);
+	while (*src && size-- != 1)
+	{
+		*dst = *src;
+		++dst;
+		++src;
+	}
+	*dst = '\0';
+	return (result);
+}
