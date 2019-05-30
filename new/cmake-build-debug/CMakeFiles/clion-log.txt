@@ -1,0 +1,4 @@
+"/Volumes/Storage/cache/kturnips/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.7141.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/kturnips/kturnips/42shadesoffail/new
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/kturnips/kturnips/42shadesoffail/new/cmake-build-debug

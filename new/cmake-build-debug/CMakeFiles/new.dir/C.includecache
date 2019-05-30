@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kturnips/kturnips/42shadesoffail/new/fillit.h
+stdlib.h
+-
+fcntl.h
+-
+unistd.h
+-
+libft/libft.h
+/Users/kturnips/kturnips/42shadesoffail/new/libft/libft.h
+
+/Users/kturnips/kturnips/42shadesoffail/new/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+
+/Users/kturnips/kturnips/42shadesoffail/new/read_file.c
+fillit.h
+/Users/kturnips/kturnips/42shadesoffail/new/fillit.h
+
