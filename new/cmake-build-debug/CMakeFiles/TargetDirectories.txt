@@ -1,0 +1,3 @@
+/Users/kturnips/kturnips/42shadesoffail/new/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/kturnips/kturnips/42shadesoffail/new/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kturnips/kturnips/42shadesoffail/new/cmake-build-debug/CMakeFiles/new.dir
