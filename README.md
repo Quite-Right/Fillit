@@ -1,2 +1,2 @@
-# fillit
-42 shades of fail
+# Fillit
+School 42 project
